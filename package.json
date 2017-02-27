@@ -1,0 +1,26 @@
+{
+  "name": "serverless-pdf",
+  "version": "1.0.0",
+  "description": "Convert HTML to PDF thru a lambda function using phantomjs and rasterize.",
+  "main": "handler.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "serverless",
+    "pdf"
+  ],
+  "author": "Calvin Chan <calvin@calvinchan.net>",
+  "license": "MIT",
+  "devDependencies": {
+    "aws-sdk": "^2.20.0"
+  },
+  "dependencies": {
+    "mocha": "^3.2.0",
+    "serverless-webpack": "^1.0.0-rc.4",
+    "webpack": "^1.13.3"
+  },
+  "browser": {
+    "vertx": false
+  }
+}

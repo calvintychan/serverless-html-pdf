@@ -1,0 +1,41 @@
+# Welcome to Serverless!
+#
+# This file is the main config file for your service.
+# It's very minimal at this point and uses default values.
+# You can always add more config options for more control.
+# We've included some commented out config examples here.
+# Just uncomment any of them to get that config option.
+#
+# For full config options, check the docs:
+#    docs.serverless.com
+#
+# Happy Coding!
+
+service: serverless-pdf
+
+provider:
+  name: aws
+  runtime: nodejs4.3
+  stage: stage
+  region: us-west-2
+  profile: serverless
+
+functions:
+  print:
+    handler: handler.print
+    events:
+      - http:
+          method: post
+          path: print
+          cors: true
+
+# plugins:
+#   - serverless-webpack
+
+package:
+  exclude:
+    - node_modules/**
+    - bin/**
+  include:
+    - bin/phantomjs-linux
+    - lib/rasterize.js

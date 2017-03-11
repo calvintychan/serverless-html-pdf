@@ -20,7 +20,7 @@ module.exports.print = (event, context, callback) => {
     });
   }
 
-  execFile(phantomjs, [rasterize, url, outputPDF], (err, stdout, stderr) => {
+  execFile(phantomjs, [rasterize, url, outputPDF, "A4", 0.68], (err, stdout, stderr) => {
     console.log('execute phantomjs');
     if (err) {
       console.log(err);

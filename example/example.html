@@ -29,6 +29,7 @@
           $.ajax({
             method: 'POST',
             url: 'https://xe6ofd5xkc.execute-api.us-west-2.amazonaws.com/stage/print',
+            contentType: 'application/json',
             data: JSON.stringify({ url: url }),
             success: function (res) {
               window.open("data:application/pdf;base64, " + res);

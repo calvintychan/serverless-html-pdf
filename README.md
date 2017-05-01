@@ -9,3 +9,6 @@ For deployment
 ```
 sls deploy
 ```
+
+Manually set [binary media types](https://s.natalian.org/2017-04-30/binary-support.png) for the end point.
+

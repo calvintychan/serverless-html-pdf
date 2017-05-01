@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+<meta charset="utf-8" />
+<style>
+body {
+	font-family: "Segoe UI", "Seravek", sans-serif;
+	font-size: 1.2em;
+}
+input { height: 1.9em; }
+</style>
+<meta name=viewport content="width=device-width, initial-scale=1">
+<meta name="twitter:creator" content="@webconverger">
+<meta name='mobile-web-app-capable' content='yes'>
+<meta name='apple-mobile-web-app-capable' content='yes'>
+<link rel="icon" type="image/svg+xml" href="/pdf.svg">
+<title>Serverless URL to PDF generator</title>
+</head>
+<body>
+<form id="urlForm">
+<input required id=url type=url name=url>
+<input type=submit value="Generate PDF">
+</form>
+<iframe id="viewer">
+</iframe>
+
+<script>
+document.getElementById("urlForm").addEventListener("submit", function(evt) {
+	evt.preventDefault();
+	fetch('https://pdf.webconverger.com/stage/print', {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json',
+			'Accept': 'application/pdf'
+		},
+		body: JSON.stringify({
+			url: document.getElementById("url").value,
+		})
+	}).then(res => res.blob())
+		.then(data => {
+			// https://developer.mozilla.org/en-US/docs/Using_files_from_web_applications#Example_Using_object_URLs_to_display_PDF
+			var iframe = document.getElementById('viewer');
+			iframe.setAttribute('src', URL.createObjectURL(data, {
+				type: "application/pdf"
+			}));
+		}).catch(console.warn)
+});
+</script>
+
+<p><a href="https://github.com/kaihendry/serverless-html-pdf">Source code</a></p>
+
+<fieldset><legend>Advertisement</legend><p>If you need <a
+		href=https://webconverger.com/>stateless Web kiosk software</a>, for
+	showing off (Web sign or dashboard) or interacting with a Web site (school exams, tourist information), choose <a
+		href="https://webconverger.com">Webconverger</a>!</p></fieldset>
+
+</body>
+</html>

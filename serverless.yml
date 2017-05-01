@@ -15,10 +15,10 @@ service: serverless-pdf
 
 provider:
   name: aws
-  runtime: nodejs4.3
+  runtime: nodejs6.10
   stage: stage
-  region: us-west-2
-  profile: serverless
+  profile: mine
+  region: ap-southeast-1
 
 functions:
   print:
